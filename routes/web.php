@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SouvenirController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/api/souvenir/datatable',[SouvenirController::class, 'datatable'])->name('souvenir.datatable');
+    Route::get('/input_souvenir',[SouvenirController::class, 'create'])->name('souvenir.input');
+    Route::post('/input_souvenir/save',[SouvenirController::class, 'saver'])->name('souvenir.input.saver');
 });
 
 require __DIR__.'/auth.php';
